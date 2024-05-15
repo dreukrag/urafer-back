@@ -1,7 +1,8 @@
-export interface User {
+export interface UserSession {
+  _id: string;
+  sessionToken: string;
   userId: string;
-  userName: string;
-  email: string;
-  accessTokenMethod: string;
-  auth: string;
+  expires: string; // 2024-06-01T22:07:08.702+00:00
 }
+
+export type UserSessionRequest = Omit<UserSession, "_id" | "expires">
