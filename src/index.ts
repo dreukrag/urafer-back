@@ -1,20 +1,26 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
-const fs = require("fs/promises");
-const express = require("express");
-const cors = require("cors");
-const { v4: uuid } = require("uuid");
+import { Db, MongoClient, ServerApiVersion } from "mongodb";
+import express from "express";
 
-export const uraniumFeverAPIService = express(); // Setup the server
+// Routes
+import userRouter from "./routes/user";
+import characterRouter from "./routes/character";
+export let db: Db;
 
-uraniumFeverAPIService.listen(3000, () =>
-  console.log("API server is running?")
-);
+const uraniumFeverAPIService = express(); // Setup the server
+uraniumFeverAPIService.use(express.json());
 
-const uri =
-  "mongodb+srv://cass_uf_adm:sdUJHxCyff5tlr7cEN8o@project-uranium-fever.t2pzckk.mongodb.net/?retryWrites=true&w=majority&appName=project-uranium-fever";
+uraniumFeverAPIService.use("/user", userRouter);
+uraniumFeverAPIService.use("/character", characterRouter);
+
+uraniumFeverAPIService.listen(8000, () => {
+  console.log("Express: online");
+  console.log("API: online");
+});
+
+const uri = process.env.MONGO_API_URI;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
+const client = new MongoClient(uri || "", {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -26,12 +32,14 @@ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
+    db = client.db("uranium_fever_db");
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
-    console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
-    );
-  } finally {
+
+    console.log("MongoDb: online");
+    console.log("All systems nominal");
+  } catch {
+    console.log("Error on the mongo connection, Closing");
     // Ensures that the client will close when you finish/error
     await client.close();
   }
