@@ -4,18 +4,26 @@ import express from "express";
 // Routes
 import userRouter from "./routes/user";
 import characterRouter from "./routes/character";
+import { GameDataManager } from "./managers/gameDataManager";
 export let db: Db;
 
 const uraniumFeverAPIService = express(); // Setup the server
 uraniumFeverAPIService.use(express.json());
+console.log("Express: online");
 
 uraniumFeverAPIService.use("/user", userRouter);
 uraniumFeverAPIService.use("/character", characterRouter);
+console.log("API: online");
 
 uraniumFeverAPIService.listen(8000, () => {
-  console.log("Express: online");
-  console.log("API: online");
 });
+
+export const gameDataManager = GameDataManager.getInstance().setupArrivalRealityBubble();
+console.log("gameDataManager: online");
+
+setInterval(() => {
+  console.log("server tick!");
+}, 250);
 
 const uri = process.env.MONGO_API_URI;
 
