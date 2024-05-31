@@ -1,0 +1,126 @@
+{
+  "name": "Arrivals Ring",
+  "slug": "arrivals_ring_north",
+  "tiles": [
+    {
+      "coordinates": [0, 0, 2],
+      "slug": "prom-el-2",
+      "connects_to": ["prom-2-service", "prom-el-1"],
+      "name": "Promenade Elevator 2nd floor",
+      "description": "description",
+      "other": "other"
+    },
+    {
+      "coordinates": [0, 1, 2],
+      "slug": "prom-2-service",
+      "connects_to": ["prom-el-2"],
+      "name": "2nd floor service room",
+      "description": "description",
+      "other": "other"
+    },
+    {
+      "coordinates": [0, 0, 1],
+      "slug": "at-1",
+      "connects_to": ["at-1-corridor"],
+      "name": "Arrivals Terminal 01",
+      "description": "description",
+      "other": "other"
+    },
+    {
+      "coordinates": [1, 0, 1],
+      "slug": "at-1-corridor",
+      "connects_to": ["at-1", "customs", "prom-access"],
+      "name": "Arrivals Terminal 1 access corridor",
+      "description": "description",
+      "other": "other"
+    },
+    {
+      "coordinates": [1, 1, 1],
+      "slug": "prom-access",
+      "connects_to": ["at-1-corridor", "prom-service", "prom-nw"],
+      "name": "Promenade Access",
+      "description": "description",
+      "other": "other"
+    },
+    {
+      "coordinates": [1, 2, 1],
+      "slug": "prom-service",
+      "connects_to": ["prom-access"],
+      "name": "Promenade service corridor",
+      "description": "description",
+      "other": "other"
+    },
+    {
+      "coordinates": [2, 0, 1],
+      "slug": "customs",
+      "connects_to": ["connects_to"],
+      "name": "Customs Office",
+      "description": "description",
+      "other": "other"
+    },
+    {
+      "coordinates": [2, 1, 1],
+      "slug": "prom-nw",
+      "connects_to": ["prom-access", "prom-ne", "prom-sw"],
+      "name": "Promenade Northwest",
+      "description": "description",
+      "other": "other"
+    },
+    {
+      "coordinates": [2, 2, 1],
+      "slug": "prom-ne",
+      "connects_to": ["prom-nw", "prom-service", "armor-store"],
+      "name": "Promenade Northeast",
+      "description": "description",
+      "other": "other"
+    },
+    {
+      "coordinates": [2, 3, 1],
+      "slug": "armor-store",
+      "connects_to": ["prom-ne"],
+      "name": "Armor R' Us",
+      "description": "description",
+      "other": "other"
+    },
+    {
+      "coordinates": [3, 1, 1],
+      "slug": "prom-sw",
+      "connects_to": ["prom-nw", "prom-se"],
+      "name": "Promenade Southwest",
+      "description": "description",
+      "other": "other"
+    },
+    {
+      "coordinates": [3, 2, 1],
+      "slug": "prom-se",
+      "connects_to": ["prom-sw", "prom-ne", "weapon-store", "item-store"],
+      "name": "Promenade Southwest",
+      "description": "description",
+      "other": "other"
+    },
+    {
+      "coordinates": [3, 3, 1],
+      "slug": "weapon-store",
+      "connects_to": ["prom-se"],
+      "name": "GUNSGUNSGUNS",
+      "description": "description",
+      "other": "other"
+    },
+    {
+      "coordinates": [4, 0, 1],
+      "slug": "prom-el-1",
+      "connects_to": ["prom-sw", "prom-el-2"],
+      "name": "Promenade Elevator",
+      "description": "description",
+      "other": "other"
+    },
+    {
+      "coordinates": [4, 3, 1],
+      "slug": "item-store",
+      "connects_to": ["prom-se"],
+      "name": "The Storehouse",
+      "description": "description",
+      "other": "other"
+    }
+  ]
+}
