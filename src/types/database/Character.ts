@@ -9,6 +9,8 @@ export interface dbCharacterSkill extends standardMongoTypes {
 
 export interface dbCharacter extends standardMongoTypes {
   userId: ObjectId;
+  worldspace: string;
+  position: [number, number, number];
 
   isLive: boolean;
   lastAction?: string;
@@ -21,3 +23,6 @@ export interface dbCharacter extends standardMongoTypes {
   reflexes: number; // Melee / Ranged hit chance
   strength: number; // Melee damage, carry weight
 }
+
+export interface CharacterMoveRequest
+  extends Pick<dbCharacter, "userId" | "_id"> {}
